@@ -1,5 +1,5 @@
 # Pokedex-Dio
 
-https://dinos-s.github.io/Pokedex-DIO/
+## Clique [aqui](https://dinos-s.github.io/Pokedex-DIO/) para testar.
 
 ![Pokdex-DIO](./pokedex.png)
