@@ -17,18 +17,27 @@ function detailPokemon(pokeDetail) {
 }
 
 pokeApi.getPokeDetails = (pokemon) => {
-    return fetch(pokemon.url)
-        .then((response) => response.json())
-        .then(detailPokemon)
+    return axios(pokemon.url)
+    .then((res) => {return res.data})
+    .then(detailPokemon)
+    // .catch((error) => {console.log(error)})
 }
+
+// pokeApi.getPokeDetails = (pokemon) => {
+//     return fetch(pokemon.url)
+//         .then((response) => response.json())
+//         .then(detailPokemon)
+// }
 
 pokeApi.getPokemons = (offset = 0, limit = 10) => {
     const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
 
-    return fetch(url)
-            .then((res) => res.json()) // Trnasformando o body em json
+    return axios(url)
+            .then((res) => res.data) // Trnasformando o body em json
             .then((jsonBody) => jsonBody.results) // resultados do jsonBody
-            .then((pokemons) => pokemons.map((pokeApi.getPokeDetails))) // detalhes do pokemon no formato json
+            .then((pokemons) => {
+                return pokemons.map((pokeApi.getPokeDetails))
+            }) // detalhes do pokemon no formato json
             .then((detailRequest) => Promise.all(detailRequest))
-            .then((pokeDetails) => pokeDetails)
+            // .then((pokeDetails) => pokeDetails)
 }
