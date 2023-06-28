@@ -20,14 +20,8 @@ pokeApi.getPokeDetails = (pokemon) => {
     return axios(pokemon.url)
     .then((res) => {return res.data})
     .then(detailPokemon)
-    // .catch((error) => {console.log(error)})
+    .catch((error) => {console.log(error)})
 }
-
-// pokeApi.getPokeDetails = (pokemon) => {
-//     return fetch(pokemon.url)
-//         .then((response) => response.json())
-//         .then(detailPokemon)
-// }
 
 pokeApi.getPokemons = (offset = 0, limit = 10) => {
     const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
